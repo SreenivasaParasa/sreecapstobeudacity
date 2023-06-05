@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Build image and add a descriptive tag
+# Build image and add a descriptive tag  
 docker build --tag=udacitycapstone .
  
 # List docker images
