@@ -23,7 +23,7 @@ commands:
           name: Destroy EKS cluster
           when: on_fail
           command: |
-            eksctl delete cluster -f kubernetes/kubernetes_deploy.yml
+            eksctl delete cluster -f kubernetes_deploy.yml
             
 jobs:
   make-lint:
@@ -104,7 +104,7 @@ jobs:
             image="udacitycapstone"
             dockerpath=sreenivasaparasa/udacitycapstone
             
-            if eksctl create cluster --config-file=kubernetes/kubernetes_deploy.yml
+            if eksctl create cluster --config-file=kubernetes_deploy.yml
             then
               echo "creating new stack"
               aws eks update-kubeconfig --name $image --region $kubeRegion              
