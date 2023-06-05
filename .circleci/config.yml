@@ -61,7 +61,7 @@ jobs:
   
   builddockerimage-uploaddockerimage:
     docker:
-      - image: cimg/golang:1.17
+      - image: cimg//golang:1.15
     steps:
       - checkout
       - setup_remote_docker:
