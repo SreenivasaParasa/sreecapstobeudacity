@@ -1,0 +1,80 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-app-service
+spec:
+  selector:
+    app: my-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-app-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/canary-by-header: "X-Color"
+    nginx.ingress.kubernetes.io/canary-header: "X-Color"
+    nginx.ingress.kubernetes.io/canary-allow: "blue"
+spec:
+  rules:
+    - host: my-app.example.com
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: my-app-service
+                port:
+                  number: 80
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-deployment-blue
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-app-blue
+  template:
+    metadata:
+      labels:
+        app: my-app-blue
+    spec:
+      containers:
+        - name: my-app-container
+          image: my-docker-image-blue:latest
+          ports:
+            - containerPort: 80
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-deployment-green
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: my-app-green
+  template:
+    metadata:
+      labels:
+        app: my-app-green
+    spec:
+      containers:
+        - name: my-app-container
+          image: my-docker-image-green:latest
+          ports:
+            - containerPort: 80
