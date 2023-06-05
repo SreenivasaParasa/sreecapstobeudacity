@@ -104,14 +104,17 @@ jobs:
             image="udacitycapstone"
             dockerpath=sreenivasaparasa/udacitycapstone
             
-            if eksctl create cluster --config-file=kubernetes_deploy.yml
-            then
-              echo "creating new stack"
-              aws eks update-kubeconfig --name $image --region $kubeRegion              
-              kubectl apply -f kubernetes_deploy.yml
+            eksctl create cluster  --name udacitycapstone --region us-east-1
+      - run:
+          name: deploy cluster
+          command: |            
+            echo "creating new stack"
+            aws eks update-kubeconfig --name $image --region $kubeRegion              
+            kubectl apply -f kubernetes_deploy.yml
+            kubectl apply -f kubernetes_service.yml
 
-              kubectl get deployments
-              kubectl get services
+            kubectl get deployments
+            kubectl get services
             else
               aws eks update-kubeconfig --name $image --region $kubeRegion
               echo "update existing stack"
