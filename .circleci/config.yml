@@ -115,17 +115,6 @@ jobs:
 
             kubectl get deployments
             kubectl get services
-            else
-              aws eks update-kubeconfig --name $image --region $kubeRegion
-              echo "update existing stack"
-              kubectl get deployments
-              kubectl get services
-              kubectl get deploy,rs,svc,pods
-              kubectl set image deployment/$image capstone-app="$dockerpath:${CIRCLE_WORKFLOW_ID:0:7}"
-              kubectl get deployments
-              kubectl get rs
-            fi
-   
   
 workflows:
   default:
