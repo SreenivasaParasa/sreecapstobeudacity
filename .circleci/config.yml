@@ -115,6 +115,7 @@ jobs:
 
             kubectl get deployments
             kubectl get services
+
   
 workflows:
   default:
