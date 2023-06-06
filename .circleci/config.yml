@@ -23,7 +23,7 @@ commands:
           name: Destroy EKS cluster
           when: on_fail
           command: |
-            eksctl delete cluster -f kubernetes_deploy.yml
+            eksctl delete cluster -f udacitycapstone 
             aws cloudformation delete-stack --stack-name eksctl-udacitycapstone-cluster
             
 jobs:
@@ -110,9 +110,8 @@ jobs:
           name: deploy cluster
           command: |            
             echo "creating new stack"
-            aws eks update-kubeconfig --name $image --region $kubeRegion              
+            aws eks update-kubeconfig --name udacitycapstone --region us-east-1              
             kubectl apply -f kubernetes_deploy.yml
-            kubectl apply -f kubernetes_service.yml
 
             kubectl get deployments
             kubectl get services
