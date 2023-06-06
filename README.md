@@ -1,4 +1,4 @@
-
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/SreenivasaParasa/sreecapstobeudacity/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/SreenivasaParasa/sreecapstobeudacity/tree/main)
 
 GitHub Url: https://github.com/SreenivasaParasa/sreecapstobeudacity
 Circle CI: [https://app.circleci.com/pipelines/github/SreenivasaParasa/sreecapstobeudacity]
