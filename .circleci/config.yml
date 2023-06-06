@@ -24,6 +24,7 @@ commands:
           when: on_fail
           command: |
             eksctl delete cluster -f kubernetes_deploy.yml
+            aws cloudformation delete-stack --stack-name eksctl-udacitycapstone-cluster
             
 jobs:
   make-lint:
@@ -125,7 +126,7 @@ jobs:
               kubectl get deployments
               kubectl get rs
             fi
-      
+      - destroy-environment
   
 workflows:
   default:
