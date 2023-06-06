@@ -2,5 +2,5 @@
 # Important URLs
 - GitHub Url: https://github.com/SreenivasaParasa/sreecapstobeudacity
 - Circle CI: [https://app.circleci.com/pipelines/github/SreenivasaParasa/sreecapstobeudacity]
-- capstone-app url: http://152834d99bfa98c5f0fc3d9d-60554545.us-east-1.elb.amazonaws.com
+- capstone-app url: [http://a86a47cfd8e994740b4f9b30ba94bbee-1346732097.us-east-1.elb.amazonaws.com]
 - Docker Hub: https://hub.docker.com/repository/docker/sreenivasaparasa/udacitycapstone/general
