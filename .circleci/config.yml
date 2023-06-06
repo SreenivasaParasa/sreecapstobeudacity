@@ -105,12 +105,12 @@ jobs:
             image="udacitycapstone"
             dockerpath=sreenivasaparasa/udacitycapstone
             
-            eksctl create cluster  --name udacitycapstonelatest --region us-east-1 --zones us-east-1b,us-east-1c,us-east-1d,us-east-1a,us-east-1f
+            eksctl create cluster  --name udacitycapstonelatestone --region us-east-1 --zones us-east-1b,us-east-1c,us-east-1d,us-east-1a,us-east-1f
       - run:
           name: deploy cluster
           command: |            
             echo "creating new stack"
-            aws eks update-kubeconfig --name udacitycapstonelatest --region us-east-1              
+            aws eks update-kubeconfig --name udacitycapstonelatestone --region us-east-1              
             kubectl apply -f kubernetes_deploy.yml
 
             kubectl get deployments
